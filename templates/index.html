@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader - All Chapters Merged</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fab fa-youtube"></i>
+                <h1>YouTube Downloader</h1>
+            </div>
+            <p class="tagline">Download videos with all chapters merged into one file</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section card">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="videoUrl" 
+                        placeholder="Paste YouTube video URL here..."
+                        class="url-input"
+                    >
+                    <button id="getInfoBtn" class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i>
+                        Get Info
+                    </button>
+                </div>
+            </div>
+            <div id="videoInfo" class="video-info card" style="display: none;">
+                <div class="video-preview">
+                    <img id="thumbnail" src="" alt="Video thumbnail" class="thumbnail">
+                    <div class="video-details">
+                        <h2 id="videoTitle"></h2>
+                        <div class="meta-info">
+                            <span><i class="fas fa-user"></i> <span id="uploader"></span></span>
+                            <span><i class="fas fa-eye"></i> <span id="views"></span> views</span>
+                            <span><i class="fas fa-clock"></i> <span id="duration"></span></span>
+                        </div>
+                        <div id="chaptersInfo" class="chapters-info"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="downloadOptions" class="download-options card" style="display: none;">
+                <h3><i class="fas fa-cog"></i> Download Options</h3>
+                
+                <div class="options-grid">
+                    <div class="option-group">
+                        <label for="quality">Quality</label>
+                        <select id="quality" class="select-input">
+                            <option value="best">Best Quality</option>
+                            <option value="1080p">1080p</option>
+                            <option value="720p">720p</option>
+                            <option value="480p">480p</option>
+                            <option value="360p">360p</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="format">Format</label>
+                        <select id="format" class="select-input">
+                            <option value="mp4">MP4</option>
+                            <option value="mkv">MKV</option>
+                            <option value="webm">WebM</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="subtitles">
+                            <span>Include Subtitles</span>
+                        </label>
+                    </div>
+
+                    <div class="option-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="audioOnly">
+                            <span>Audio Only (MP3)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button id="downloadBtn" class="btn btn-success btn-large">
+                    <i class="fas fa-download"></i>
+                    Download Video (All Chapters Merged)
+                </button>
+            </div>
+
+            <div id="progressSection" class="progress-section card" style="display: none;">
+                <h3>Download Progress</h3>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <p id="progressText" class="progress-text">Preparing download...</p>
+            </div>
+
+            <div id="completeSection" class="complete-section card" style="display: none;">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Download Complete!</h3>
+                <p id="downloadedFileName"></p>
+                <button id="downloadFileBtn" class="btn btn-primary">
+                    <i class="fas fa-file-download"></i>
+                    Download File
+                </button>
+                <button id="newDownloadBtn" class="btn btn-secondary">
+                    <i class="fas fa-plus"></i>
+                    Download Another Video
+                </button>
+            </div>
+            <div class="playlist-section card">
+                <h3><i class="fas fa-list"></i> Download Playlist</h3>
+                <p class="info-text">Want to download an entire playlist? Paste the playlist URL below:</p>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="playlistUrl" 
+                        placeholder="Paste YouTube playlist URL here..."
+                        class="url-input"
+                    >
+                    <button id="downloadPlaylistBtn" class="btn btn-accent">
+                        <i class="fas fa-download"></i>
+                        Download Playlist
+                    </button>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>⚠️ Only download videos you have permission to download. Respect copyright laws.</p>
+            <p>Made with ❤️ by Victor</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
